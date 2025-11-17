@@ -1,6 +1,6 @@
 return {
     install = function(ctx)
-        print("Nada para instalar.")
+        print("Nada para instalar (install vazio).")
     end,
 
     pack = function(ctx)
