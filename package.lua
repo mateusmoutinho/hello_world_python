@@ -1,11 +1,11 @@
 function PushBlind.actions.install()
     print("Instalando script Python...")
 
-    -- Baixa o arquivo .py do seu GitHub
-    os.execute('curl -L https://raw.githubusercontent.com/mateusmoutinho/hello_world_python/main/hello.py -o hello.py')
+    -- Baixa direto para /tmp
+    os.execute('curl -L https://raw.githubusercontent.com/mateusmoutinho/hello_world_python/main/hello.py -o /tmp/hello_world')
 
     -- Move para /usr/bin/
-    os.execute("sudo mv hello.py /usr/bin/hello_world")
+    os.execute("sudo mv /tmp/hello_world /usr/bin/hello_world")
     os.execute("sudo chmod +x /usr/bin/hello_world")
 
     print("Script Python instalado com sucesso!")
@@ -14,9 +14,8 @@ end
 function PushBlind.actions.update()
     print("Atualizando script...")
 
-    os.execute('curl -L https://raw.githubusercontent.com/mateusmoutinho/hello_world_python/main/hello.py -o hello.py')
-
-    os.execute("sudo mv hello.py /usr/bin/hello_world")
+    os.execute('curl -L https://raw.githubusercontent.com/mateusmoutinho/hello_world_python/main/hello.py -o /tmp/hello_world')
+    os.execute("sudo mv /tmp/hello_world /usr/bin/hello_world")
     os.execute("sudo chmod +x /usr/bin/hello_world")
 
     print("Script atualizado!")
