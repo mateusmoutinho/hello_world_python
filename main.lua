@@ -1,9 +1,10 @@
 return {
-  pack = function(ctx)
-    local target = ctx.input.target or "hello_package.zip"
-    -- empacota todos os arquivos .py
-    ctx:sh("zip -j " .. target .. " hello.py")
-    print("Pacote criado: " .. target)
-  end,
+    install = function(ctx)
+        print("Nada para instalar.")
+    end,
 
+    pack = function(ctx)
+        ctx:sh("zip -j hello_package.zip hello.py")
+        print("Pacote criado: hello_package.zip")
+    end
 }
