@@ -1,7 +1,17 @@
-local M = {}
+local PushBlind = {}
+
+-- Metadados do pacote
+PushBlind.meta = {
+    name = "hello_python",
+    version = "1.0.0",
+    description = "Instala o script hello.py como comando hello_python"
+}
+
+-- Ações
+PushBlind.actions = {}
 
 -- INSTALAR
-function M.install(ctx)
+function PushBlind.actions.install(ctx)
     print("Instalando hello_python...")
 
     os.execute('curl -L https://raw.githubusercontent.com/mateusmoutinho/hello_world_python/main/hello.py -o hello_python')
@@ -13,7 +23,7 @@ function M.install(ctx)
 end
 
 -- ATUALIZAR
-function M.update(ctx)
+function PushBlind.actions.update(ctx)
     print("Atualizando hello_python...")
 
     os.execute('curl -L https://raw.githubusercontent.com/mateusmoutinho/hello_world_python/main/hello.py -o hello_python')
@@ -25,7 +35,7 @@ function M.update(ctx)
 end
 
 -- REMOVER
-function M.remove(ctx)
+function PushBlind.actions.remove(ctx)
     print("Removendo hello_python...")
 
     os.execute("sudo rm -f /usr/bin/hello_python")
@@ -33,9 +43,9 @@ function M.remove(ctx)
     print("hello_python removido!")
 end
 
--- Comando customizado
-function M.run(ctx)
+-- RODAR
+function PushBlind.actions.run(ctx)
     os.execute("python3 /usr/bin/hello_python")
 end
 
-return M
+return PushBlind
