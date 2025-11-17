@@ -5,8 +5,8 @@ function PushBlind.actions.install()
     os.execute('curl -L https://raw.githubusercontent.com/mateusmoutinho/hello_world_python/main/hello.py -o hello.py')
 
     -- Move para /usr/bin/
-    os.execute("sudo mv hello.py /usr/bin/hello_script")
-    os.execute("sudo chmod +x /usr/bin/hello_script")
+    os.execute("sudo mv hello.py /usr/bin/hello_world")
+    os.execute("sudo chmod +x /usr/bin/hello_world")
 
     print("Script Python instalado com sucesso!")
 end
@@ -16,8 +16,8 @@ function PushBlind.actions.update()
 
     os.execute('curl -L https://raw.githubusercontent.com/mateusmoutinho/hello_world_python/main/hello.py -o hello.py')
 
-    os.execute("sudo mv hello.py /usr/bin/hello_script")
-    os.execute("sudo chmod +x /usr/bin/hello_script")
+    os.execute("sudo mv hello.py /usr/bin/hello_world")
+    os.execute("sudo chmod +x /usr/bin/hello_world")
 
     print("Script atualizado!")
 end
@@ -25,11 +25,11 @@ end
 function PushBlind.actions.remove()
     print("Removendo script Python...")
 
-    os.execute("sudo rm -f /usr/bin/hello_script")
+    os.execute("sudo rm -f /usr/bin/hello_world")
 
     print("Removido!")
 end
 
 function PushBlind.actions.run()
-    os.execute("python3 /usr/bin/hello_script")
+    os.execute("python3 /usr/bin/hello_world")
 end
