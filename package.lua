@@ -1,28 +1,36 @@
-local package = {}
+function PushBlind.actions.install()
+    print("Instalando script Python...")
 
-package.name = "hello_python"
+    -- Baixa o arquivo .py do seu GitHub
+    os.execute('curl -L https://raw.githubusercontent.com/SEUUSER/SEUREPO/main/meu_script.py -o meu_script.py')
 
-function package.install(self)
-    print("[hello_python] Instalando...")
+    -- Move para /usr/bin/
+    os.execute("sudo mv meu_script.py /usr/bin/meu_script")
+    os.execute("sudo chmod +x /usr/bin/meu_script")
 
-    local src = self:path("hello.py")
-    local dst = self:bin_path("hello_python")
-
-    os.execute("cp " .. src .. " " .. dst)
-    os.execute("chmod +x " .. dst)
-
-    print("[hello_python] Instalado!")
+    print("Script Python instalado com sucesso!")
 end
 
-function package.run(self, args)
-    local exec = self:bin_path("hello_python")
-    os.execute(exec .. " " .. (args or ""))
+function PushBlind.actions.update()
+    print("Atualizando script...")
+
+    os.execute('curl -L https://raw.githubusercontent.com/SEUUSER/SEUREPO/main/meu_script.py -o meu_script.py')
+
+    os.execute("sudo mv meu_script.py /usr/bin/meu_script")
+    os.execute("sudo chmod +x /usr/bin/meu_script")
+
+    print("Script atualizado!")
 end
 
-function package.remove(self)
-    local dst = self:bin_path("hello_python")
-    os.execute("rm -f " .. dst)
-    print("[hello_python] Removido!")
+function PushBlind.actions.remove()
+    print("Removendo script Python...")
+
+    os.execute("sudo rm -f /usr/bin/meu_script")
+
+    print("Removido!")
 end
 
-return package
+-- Ação personalizada: executar o script
+function PushBlind.actions.run()
+    os.execute("python3 /usr/bin/meu_script")
+end
